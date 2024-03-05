@@ -1,0 +1,81 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "x64-linux",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_VERBOSE_MAKEFILE": "ON"
+            },
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "hostOS": ["Linux"],
+                    "intelliSenseMode": "linux-gcc-x64"
+                }
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        },
+        {
+            "name": "x64-macos",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_VERBOSE_MAKEFILE": "ON"
+            },
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "hostOS": ["macOS"],
+                    "intelliSenseMode": "ios-clang-x64"
+                }
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "macOS"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "x64-linux-guess-number",
+            "displayName": "Guess number",
+            "configurePreset": "x64-linux",
+            "targets": ["guess-number", "guess-number-reverse"]
+        },
+        {
+            "name": "x64-linux-hangman",
+            "displayName": "Hangman",
+            "configurePreset": "x64-linux",
+            "targets": ["hangman"]
+        },
+        {
+            "name": "x64-linux-test",
+            "displayName": "Test",
+            "configurePreset": "x64-linux",
+            "targets": ["test"]
+        },
+        {
+            "name": "x64-linux-tic-tac-toe",
+            "displayName": "Tic Tac Toe",
+            "configurePreset": "x64-linux",
+            "targets": ["tic-tac-toe"]
+        }
+    ]
+}
